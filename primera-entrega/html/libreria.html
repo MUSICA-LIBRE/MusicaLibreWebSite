@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Autor" content="Yudieskel Roque Cardentey">
+    <link rel="stylesheet" href="../estilos/libreria.css">
+    <title>Música Libre</title>
+    <!--Letras en: https://fonts.google.com/-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
+    <!--font-family: 'Benne', serif;-->
+    <!-- Cargamos Jquery para menú hamburguesa -->
+    <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous">
+        </script>
+    <!-- Cargar el script de wavesurfer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.7/wavesurfer.min.js"></script>
+    <!-- Cargamos Jquery botón ir arriba-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body id="pagina-libreria">
+    <!-- Crear menú principal-->
+    <header>
+        <ul class="menu-principal">
+            <li class="inicio"><a href="../index.html">Inicio</a></li>
+            <li class="entrar"><a href="../html/entrar.html">Entrar</a></li>
+            <li class="libreria"><a href="../html/libreria.html">Librería</a></li>
+            <li class="contacto"><a href="../html/contacto.html">Contacto</a></li>
+        </ul>
+    </header>
+    <main id="centro-de-pagina">
+        <div class="contenedor">
+            <div class="buscador">
+                <h1>Música sin restricción para tus proyectos</h1>
+                <img class="vinilo" src="../imagenes/vinyl-pixabay-no-copyright-pictures.png"
+                    alt="Muchos discos de vinilo">
+                <div class="blanco"></div>
+                <img class="logo" src="../imagenes/poster5_16_104838.jpeg" alt="Logo de Música Libre">
+                <form action="#">
+                    <!--Buscar por título-->
+                    <button id="buscar-titulo"><img class="lupa-buscar" src="../imagenes/busqueda-de-lupa.png"
+                            alt="Lupa"></button>
+                    <input id="titulo" type="text" name="titulo" autofocus placeholder="Título ">
+                    <!--Buscar por artista-->
+                    <button id="buscar-artista"><img class="lupa-buscar" src="../imagenes/busqueda-de-lupa.png"
+                            alt="Lupa"></button>
+                    <input id="artista" type="text" name="artista" placeholder="Artista">
+                    <!--Buscar por género-->
+                    <button id="buscar-genero"><img class="etiqueta" src="../imagenes/etiqueta.png"
+                            alt="Etiqueta"></button>
+                    <select name="genero" id="genero">
+                        <option value="" disabled selected>Género</option>
+                        <option value="genero-alternative">Alternative</option>
+                        <option value="genero-ambient">Ambient</option>
+                        <option value="genero-bass">Bass</option>
+                        <option value="genero-chill">Chill</option>
+                        <option value="genero-drum-bass">Drum & Bass</option>
+                        <option value="genero-drumstep">Drumstep</option>
+                        <option value="genero-dubstep">Dubstep</option>
+                        <option value="genero-edm">EDM</option>
+                        <option value="genero-electronic">Electronic</option>
+                        <option value="genero-future-house">Future House</option>
+                        <option value="genero-future-pop">Future PoP</option>
+                        <option value="genero-hardstyle">Hardstyle</option>
+                        <option value="genero-house">House</option>
+                        <option value="genero-indie">Indie</option>
+                        <option value="genero-melodic-dubstep">Melodic Dubstep</option>
+                        <option value="genero-n/a">N/A</option>
+                        <option value="genero-trap">Trap</option>
+                    </select>
+                </form>
+            </div>
+            <div id="reproductor-audio">
+                <!-- Crear un div donde se mostrará la onda de sonido -->
+                <div id="audio-spectrum"></div>
+                <!-- Crear botones de acciones del reproductor-->
+                <section class="btn-control">
+                    <input type="image" id="btn-play" src="../imagenes/tocar.png" disabled="disabled" />
+                    <input type="image" id="btn-pause" src="../imagenes/pausa.png" disabled="disabled" />
+                    <input type="image" id="btn-stop" src="../imagenes/detener.png" disabled="disabled" />
+                </section>
+            </div>
+            <!-- Crear lista de temas-->
+            <div class="listado">
+                <ul class="fila-comun">
+                    <li>Título</li>
+                    <li>Artista</li>
+                    <li>Género</li>
+                </ul>
+                <ul class="fila-uno">
+                    <li><a id="miAudio" href="#" title="Cargar al reproductor"
+                            type="https://manzdev.github.io/codevember2017/assets/eye-tiger.mp3"><img
+                                class="boton-reproducir" src="../imagenes/boton-cargar-audio.png" alt="Reproducir"></a>
+                    </li>
+                    <li>Probar</li>
+                    <li>Artista 1</li>
+                    <li>Género 1</li>
+                    <li><a class="descargar" href="#"></a><img class="boton-descargar"
+                            src="../imagenes/flecha-hacia-abajo.png" alt="Descargar"></a></li>
+                </ul>
+                <ul class="fila-dos">
+                    <li><a class="reproducir" href="#"><img class="boton-reproducir"
+                                src="../imagenes/boton-cargar-audio.png" alt="Reproducir"></a></li>
+                    <li>Título 2</li>
+                    <li>Artista 2</li>
+                    <li>Género 2</li>
+                    <li><a class="descargar" href="#"></a><img class="boton-descargar"
+                            src="../imagenes/flecha-hacia-abajo.png" alt="Descargar"></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Crear menú hamburguesa-->
+        <nav class>
+            <div id="envoltura">
+                <div>
+                    <a href="#" id="menu_on">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul class="menu-hamburguesa">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../html/entrar.html">Entrar</a></li>
+                        <li><a href="../html/libreria.html">Librería</a></li>
+                        <li><a href="../html/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <a class="ir-arriba"><img class="flecha-arriba" src="../imagenes/ir-directamente.png"
+                alt="Flecha hacia arriba"></a>
+    </main>
+    <!-- Crear pie de página-->
+    <footer class="redes-sociales">
+        <ul class="redes">
+            <li class="facebook"><a href="https://www.facebook.com/canalmusicalibreyoutube" target="_blank"><img
+                        src="../imagenes/facebook.png" alt="Facebook"></a></li>
+            <li class="instagram"><a href="https://www.instagram.com/yudieskelroque" target="_blank"><img
+                        src="../imagenes/instagram.png" alt="Instagram"></a></li>
+            <li class="youtube"><a
+                    href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUC0kVqtxUBeBq5nuDjgJKc_g%3Ffbclid%3DIwAR03-rrZLu_NqmXiSlQGTwLnmQkTbMNvozIZenmaeA58n_2izT8nEobg2Fo&h=AT2HeCx8IDbZFLgSvOromGOc0Q4bLl25SJEm-qRskbC0Ma7gu2NdBVlUCReRuzM8JGx5_d_J0_XKoQU3Vpvce0u8VZ1PrnzCE5QthMnaEIBz8jHwHgvn2H5HjWiSxDkA22xx&__tn__=-UK-R&c[0]=AT1qhJjXrlsXMSAyoD77bBvbQlZUQ35CWOg7Q-rx-7hRv_xtuXCD8NqPn9oOdG1BnzyR4thPsZoIrrnqudv_I9Yk632QCljO41FZICUfJfrfiqkj-3D_ipYk9buD3VSzoHdoWoJQ4AgZ44wzmePWyjijrMmixuZBMERXoA"
+                    target="_blank"><img src="../imagenes/youtube.png" alt="You Tube"></a></li>
+            <li class="costv"><a href="https://cos.tv/channel/22750516301441024" target="_blank"><img
+                        src="../imagenes/costvicono.png" alt="Cos TV"></a></li>
+            <li class="odysee"><a href="https://odysee.com/@músicalibre:f" target="_blank"><img
+                        src="../imagenes/odyseeicono.jfif" alt="Odysee"></a></li>
+            <li class="spotify"><a
+                    href="https://l.facebook.com/l.php?u=https%3A%2F%2Fopen.spotify.com%2Fplaylist%2F0vCso2vTJuIQCJzluXLL8V%3Ffbclid%3DIwAR196gWkQKYVuUfC6968vthj-3qyhJu_ShvHt4TVDGJnjwNcwfFoboBOu6w&h=AT2C3l2VbH8YhtkhGkZ_YoGE7Z9SwwsgEVlW8oJRBckTa8N_x9BWMVwE-1cfueEpvuTadHGWtQooDnN7Ui7MAOR0QIdSTfRvKH-hhVX22n9F1HkIdE7rS5O2-FiT9MU4sRfy&__tn__=-UK-R&c[0]=AT1qhJjXrlsXMSAyoD77bBvbQlZUQ35CWOg7Q-rx-7hRv_xtuXCD8NqPn9oOdG1BnzyR4thPsZoIrrnqudv_I9Yk632QCljO41FZICUfJfrfiqkj-3D_ipYk9buD3VSzoHdoWoJQ4AgZ44wzmePWyjijrMmixuZBMERXoA"
+                    target="_blank"><img src="../imagenes/spotify.png" alt="Odysee"></a></li>
+        </ul>
+        <h5><img class="copyright" src="../imagenes/copyright.png" alt="Icono copyright"> Música Libre <span
+                class="span-footer"> 2021 - </span><a class="terminos-condiciones" href="#">Términos</a> | <a
+                class="terminos-condiciones" href="#">Condiciones</a></h5>
+    </footer>
+    <script src="../scripts/libreria.js"></script>
+</body>
+
+</html>
